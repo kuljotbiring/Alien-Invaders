@@ -40,14 +40,8 @@ class AlienInvasion:
             # update ship position after keyboard checked & before updating screen
             self.ship.update()
 
-            # update position of bullets on each pass
-            self.bullets.update()
-
-            # Get rid of bullets that have dissapeared
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-
+            # update position of the bullets
+            self._update_bullets()
 
             # Redraw the screen during each pass through the loop.
             # Make the most recently drawn screen visible.
@@ -88,8 +82,19 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        # update position of bullets on each pass
+        self.bullets.update()
+
+        # Get rid of bullets that have dissapeared
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
