@@ -43,6 +43,12 @@ class AlienInvasion:
             # update position of bullets on each pass
             self.bullets.update()
 
+            # Get rid of bullets that have dissapeared
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+
+
             # Redraw the screen during each pass through the loop.
             # Make the most recently drawn screen visible.
             self._update_screen()
