@@ -1,6 +1,7 @@
 import sys
 import pygame
 from ship import Ship
+from bullet import Bullet
 
 from settings import Settings
 
@@ -25,6 +26,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion - By: Kuljot Biring")
 
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
         # Set the background color.
         self.bg_color = (230, 230, 230)
@@ -37,6 +39,9 @@ class AlienInvasion:
 
             # update ship position after keyboard checked & before updating screen
             self.ship.update()
+
+            # update position of bullets on each pass
+            self.bullets.update()
 
             # Redraw the screen during each pass through the loop.
             # Make the most recently drawn screen visible.
@@ -65,6 +70,8 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
 
     def _check_keyup_events(self, event):
         """Respond to key releases"""
@@ -77,6 +84,8 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
 
         pygame.display.flip()
 
