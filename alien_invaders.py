@@ -46,13 +46,14 @@ class AlienInvasion:
             # Watch for keyboard and mouse events.
             self._check_events()
 
-            # update ship position after keyboard checked & before updating screen
-            self.ship.update()
+            if self.stats.game_active:
+                # update ship position after keyboard checked & before updating screen
+                self.ship.update()
 
-            # update position of the bullets
-            self._update_bullets()
+                # update position of the bullets
+                self._update_bullets()
 
-            self._update_aliens()
+                self._update_aliens()
 
             # Redraw the screen during each pass through the loop.
             # Make the most recently drawn screen visible.
