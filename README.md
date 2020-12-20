@@ -30,11 +30,12 @@ python3 -m pip install --user pygame
 
 ## :video_game: Play Game!
 Run alien_invasion.py from your favorite IDE or the command line!
+Use the arrow keys to move left and right. Spacebar to fire!
 
 ```bash
 python3 alien_invasion.py
 ```
-## Screenshot
+## :camera: Screenshot
 ![Alt text](/images/gameplay.png?raw=true "Gameplay Screenshot")
 
 ## License
