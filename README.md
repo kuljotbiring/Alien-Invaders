@@ -34,6 +34,8 @@ Run alien_invasion.py from your favorite IDE or the command line!
 ```bash
 python3 alien_invasion.py
 ```
+## Screenshot
+![Alt text](/images/gameplay.png?raw=true "Gameplay Screenshot")
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
